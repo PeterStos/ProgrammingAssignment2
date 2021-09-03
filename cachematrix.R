@@ -5,6 +5,7 @@
 ## setInvMatrix (set the inverse of a matrix) and getInvMatrix (get the inverse) 
 
 makeCacheMatrix <- function(x = matrix()) {
+  
   m <- NULL
   set <- function(y) {
     x <<- y
@@ -16,21 +17,20 @@ makeCacheMatrix <- function(x = matrix()) {
   list(set = set, get = get,
        setInvMatrix = setInvMatrix,
        getInvMatrix = getInvMatrix)
-
 }
 
 ## Function calculates the inverse of a matrix created with the above function
 
 cacheSolve <- function(x=0) {
-  ## Return a matrix that is the inverse of 'x'
+
   m <- x$getInvMatrix()
-  if(!is.null(m)) { # test if m is not null
+  if(!is.null(m)) { 
     message("getting cached data")
     return(m)
   }
-  data <- x$get() # saves the vector to data
-  m <- solve(data) # calculates the mean of the vector (only here)
-  x$setInvMatrix(m) # set the mean in the cache
+  data <- x$get() 
+  m <- solve(data) 
+  x$setInvMatrix(m) 
   m
 }
 
